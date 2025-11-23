@@ -1,0 +1,5 @@
+✅ Reverse proxy with nginx
+✅ Reverse proxy with Docker Compose
+✅ Reverse proxy with authentication service
+✅ Reverse proxy with rate limiting + caching
+✅ Reverse proxy with load balancing
