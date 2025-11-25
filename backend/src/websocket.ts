@@ -34,7 +34,7 @@ export function setupWebSocket(server: any) {
       
 
 
-      clients.forEach((client) => client.send(message.toString()));
+      clients.forEach((client) => client.send(me .toString()));
     });
 
     ws.on("close", () => {

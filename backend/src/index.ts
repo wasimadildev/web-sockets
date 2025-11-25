@@ -5,7 +5,9 @@ import http from 'http';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { middleware } from './middleware.js';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -32,7 +34,9 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-
+app.get('/', (req, res) => {
+    res.send('Welcome to the Chat App API');
+});
 // Register
 app.post('/register', async (req, res) => {    
     try {
