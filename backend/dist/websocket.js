@@ -16,6 +16,11 @@ export function setupWebSocket(server) {
         console.log(`🔌 Authenticated client connected: ${id}`);
         ws.send(JSON.stringify({ type: "welcome", id, user }));
         ws.on("message", (message) => {
+            /*
+      
+      
+      
+            */
             clients.forEach((client) => client.send(message.toString()));
         });
         ws.on("close", () => {

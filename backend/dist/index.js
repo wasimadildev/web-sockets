@@ -23,6 +23,11 @@ const userSchema = new mongoose.Schema({
     refreshToken: { type: String },
     accessToken: { type: String },
 }, { timestamps: true });
+const ChatMessageSchema = new mongoose.Schema({
+    roomId: { type: String, required: true },
+    senderId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    content: { type: String, required: true },
+}, { timestamps: true });
 const User = mongoose.model('User', userSchema);
 app.get('/', (req, res) => {
     res.send('Welcome to the Chat App API');
@@ -70,7 +75,12 @@ app.post('/login', async (req, res) => {
 });
 // join room 
 app.post('/join', middleware, (req, res) => {
-    res.send({ message: `User ${req} joined the room` });
+    // if user join the room then he can send message to that room
+    // TODO: Implement room joining logic
+    try {
+    }
+    catch (error) {
+    }
 });
 server.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

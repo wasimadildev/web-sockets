@@ -32,6 +32,15 @@ const userSchema = new mongoose.Schema({
 
 }, { timestamps: true });
 
+
+const ChatMessageSchema = new mongoose.Schema({
+    roomId: { type: String, required: true },
+    senderId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    content: { type: String, required: true },
+}, { timestamps: true });
+
+
+
 const User = mongoose.model('User', userSchema);
 
 app.get('/', (req, res) => {
@@ -94,9 +103,23 @@ app.post('/login', async (req, res) => {
 });
 
 // join room 
+
 app.post('/join', middleware, (req, res) => {
 
-    res.send({ message: `User ${req} joined the room` });
+    // if user join the room then he can send message to that room
+    // TODO: Implement room joining logic
+    try {
+        const user = (req as any).user;
+        const { roomId } = req.body;
+        
+        res.send({ message: `User ${user.userId} joined the room successfully` });
+        
+    } catch (error) {
+        
+    }
+
+
+   
 
 });
 
